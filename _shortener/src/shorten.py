@@ -9,9 +9,17 @@ import unicodedata
 from pathlib import Path
 from string import Template
 
+import requests
+
 BASE_URL = "https://cuny.manifoldapp.org"
+API_URL = f"{BASE_URL}/api/v1"
 JOURNAL_SLUG = "hml"
-TEMPLATE = Path(__file__).parent.parent / "templates" / "redirect.html"
+SHORT_BASE_URL = "https://docs.humanitiesmethods.org"
+
+SHORTENER_DIR = Path(__file__).parent.parent  # _shortener/
+SITE_ROOT = SHORTENER_DIR.parent  # the docs repo, served at SHORT_BASE_URL
+LINKS_CSV = SHORTENER_DIR / "links.csv"
+TEMPLATE = SHORTENER_DIR / "templates" / "redirect.html"
 COLUMNS = ["path", "kind", "manifold_id", "category", "title", "subtitle", "target"]
 
 # Allowed links.csv paths: "1" for an issue, "1/some-code" for a text.
@@ -19,6 +27,7 @@ PATH_PATTERNS = {
     "issue": re.compile(r"[1-9][0-9]*"),
     "text": re.compile(r"[1-9][0-9]*/[a-z0-9]+(-[a-z0-9]+)*"),
 }
+
 # Small words that don't count toward the two content words in a short code.
 STOPWORDS = set(
     "a an and as at by for from in into is it its of on or the to with".split()
@@ -240,3 +249,67 @@ def validate_links(rows):
             problems.append(f"{path}: path is used more than once")
         seen.add(path)
     return problems
+
+
+def fetch_json(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.json()
+
+
+def fetch_issues():
+    """Fetch HML's issues numbered 1 and up."""
+    journals = fetch_json(f"{API_URL}/journals?filter[slug]={JOURNAL_SLUG}")
+    journal_id = find_journal_id(journals)
+    return parse_issues(
+        fetch_json(
+            f"{API_URL}/journals/{journal_id}/relationships/journal_issues"
+            "?page[size]=100"
+        )
+    )
+
+
+def fetch_project(project_id):
+    """Fetch an issue's project with its texts and their categories."""
+    return fetch_json(f"{API_URL}/projects/{project_id}?include=texts,textCategories")
+
+
+def add(number, csv_path=LINKS_CSV):
+    """Append rows for one issue to links.csv and print the new short URLs."""
+    issue = {issue["number"]: issue for issue in fetch_issues()}[number]
+    rows = read_links(csv_path) if csv_path.exists() else []
+    added = new_rows(issue, parse_texts(fetch_project(issue["project_id"])), rows)
+    write_links(csv_path, rows + added)
+    print(f"Added {len(added)} links to {csv_path.name}")
+    for row in added:
+        print(f"  {SHORT_BASE_URL}/{row['path']}  {row['title']}")
+
+
+def build(csv_path=LINKS_CSV, site_root=SITE_ROOT):
+    """Refresh every row's target from Manifold, then write the redirect pages."""
+    rows = read_links(csv_path)
+    current = {}
+    for row in rows:
+        if row["kind"] == "issue":
+            current |= current_targets(fetch_project(row["manifold_id"]))
+    rows = refresh_rows(rows, current)
+    write_links(csv_path, rows)
+    write_pages(rows, site_root)
+    print(f"Wrote {len(rows)} redirect pages")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    commands = parser.add_subparsers(dest="command", required=True)
+    add_command = commands.add_parser("add", help="add a new issue's links")
+    add_command.add_argument("issue", type=issue_number, help="issue number, 1 or up")
+    commands.add_parser("build", help="refresh targets and write redirect pages")
+    args = parser.parse_args()
+    if args.command == "add":
+        add(args.issue)
+    else:
+        build()
+
+
+if __name__ == "__main__":
+    main()
