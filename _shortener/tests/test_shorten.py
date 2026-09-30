@@ -161,3 +161,49 @@ def test_current_targets_maps_each_text_to_its_reading_url():
 def test_current_targets_covers_the_issue_and_all_8_texts():
     current = shorten.current_targets(load_fixture("project_issue_1.json"))
     assert len(current) == 9
+
+
+# --- Proposing a short code from a title ---
+
+
+def test_code_uses_the_main_title_before_the_colon():
+    title = "Reading Disrepair: Library Space and Institutional Value"
+    assert shorten.propose_code(title) == "reading-disrepair"
+
+
+def test_code_stops_after_two_content_words():
+    title = "Embracing Place and Naming Placelessness in Librarianship"
+    assert shorten.propose_code(title) == "embracing-place"
+
+
+def test_code_keeps_small_words_between_the_two_content_words():
+    title = "Metadata as Care: Cultivating Meaningful Access in Digital Archives"
+    assert shorten.propose_code(title) == "metadata-as-care"
+
+
+def test_code_is_lowercase():
+    assert shorten.propose_code("Ode to The Abode of All Known") == "ode-to-the-abode"
+
+
+def test_code_drops_curly_and_straight_apostrophes():
+    assert shorten.propose_code("Pretend It’s Magic: The Story") == "pretend-its-magic"
+    assert shorten.propose_code("Pretend It's Magic: The Story") == "pretend-its-magic"
+
+
+def test_code_turns_accented_letters_into_plain_letters():
+    assert shorten.propose_code("Émigré Archives: A Study") == "emigre-archives"
+
+
+def test_code_for_a_review_starts_with_review():
+    title = "Review of Triptych: Death, AI, and Librarianship"
+    assert shorten.propose_code(title) == "review-triptych"
+
+
+def test_code_for_a_review_uses_the_reviewed_title():
+    title = "Review of Hayek’s Bastards: The Neoliberal Roots of the Populist Right"
+    assert shorten.propose_code(title) == "review-hayeks-bastards"
+
+
+def test_code_for_a_review_without_a_colon():
+    title = "Review of How to Study Public Life"
+    assert shorten.propose_code(title) == "review-how-to-study"
