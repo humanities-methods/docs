@@ -252,6 +252,7 @@ def validate_links(rows):
 
 
 def fetch_json(url):
+    """Get a Manifold API URL; an HTTP error stops the run."""
     response = requests.get(url)
     response.raise_for_status()
     return response.json()
@@ -276,7 +277,8 @@ def fetch_project(project_id):
 
 def add(number, csv_path=LINKS_CSV):
     """Append rows for one issue to links.csv and print the new short URLs."""
-    issue = {issue["number"]: issue for issue in fetch_issues()}[number]
+    issues_by_number = {item["number"]: item for item in fetch_issues()}
+    issue = issues_by_number[number]
     rows = read_links(csv_path) if csv_path.exists() else []
     added = new_rows(issue, parse_texts(fetch_project(issue["project_id"])), rows)
     write_links(csv_path, rows + added)
