@@ -540,3 +540,23 @@ def test_find_issue_explains_an_issue_not_on_manifold_yet():
     issues = shorten.parse_issues(load_fixture("journal_issues.json"))
     with pytest.raises(SystemExit, match="Issue 2 isn't on Manifold yet"):
         shorten.find_issue(issues, 2)
+
+
+# --- `build`: refusing a broken links.csv ---
+
+
+def test_check_links_lets_good_rows_through():
+    shorten.check_links([issue_row(), metadata_row()])  # does not stop
+
+
+def test_check_links_stops_and_names_the_bad_path():
+    with pytest.raises(SystemExit, match="1/Metadata-As-Care"):
+        shorten.check_links([metadata_row(path="1/Metadata-As-Care")])
+
+
+def test_build_writes_nothing_from_a_broken_links_csv(tmp_path):
+    csv_path = tmp_path / "links.csv"
+    shorten.write_links(csv_path, [metadata_row(path="1/bad code")])
+    with pytest.raises(SystemExit):
+        shorten.build(csv_path, tmp_path / "site")
+    assert not (tmp_path / "site").exists()

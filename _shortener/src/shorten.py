@@ -245,6 +245,13 @@ def validate_links(rows):
     return problems
 
 
+def check_links(rows):
+    """Stop with a list of problems if any row in links.csv is invalid."""
+    problems = validate_links(rows)
+    if problems:
+        sys.exit("links.csv has problems:\n  " + "\n  ".join(problems))
+
+
 def fetch_json(url):
     """Get a Manifold API URL; an HTTP error stops the run."""
     response = requests.get(url)
@@ -292,6 +299,7 @@ def add(number, csv_path=LINKS_CSV):
 def build(csv_path=LINKS_CSV, site_root=SITE_ROOT):
     """Refresh every row's target from Manifold, then write the redirect pages."""
     rows = read_links(csv_path)
+    check_links(rows)
     current = {}
     for row in rows:
         if row["kind"] == "issue":
