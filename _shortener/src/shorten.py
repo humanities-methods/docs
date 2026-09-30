@@ -28,3 +28,36 @@ def parse_issues(issues_response):
                 }
             )
     return issues
+
+
+def parse_texts(project_response):
+    """Return an issue's published texts in table-of-contents order:
+    by category (Peer Reviewed, CREATIVE, ...), then position within it."""
+    included = project_response["included"]
+    categories = {
+        item["id"]: item["attributes"]
+        for item in included
+        if item["type"] == "categories"
+    }
+    texts = [
+        item
+        for item in included
+        if item["type"] == "texts" and item["attributes"]["published"]
+    ]
+
+    def category_of(text):
+        return categories[text["relationships"]["category"]["data"]["id"]]
+
+    texts.sort(
+        key=lambda text: (category_of(text)["position"], text["attributes"]["position"])
+    )
+    return [
+        {
+            "id": text["id"],
+            "title": text["attributes"]["title"],
+            "subtitle": text["attributes"]["subtitlePlaintext"],
+            "category": category_of(text)["title"],
+            "target": f"{BASE_URL}/read/{text['attributes']['slug']}",
+        }
+        for text in texts
+    ]
