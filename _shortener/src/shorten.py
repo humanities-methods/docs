@@ -261,8 +261,9 @@ def check_links(rows):
 
 
 def fetch_json(url):
-    """Get a Manifold API URL; an HTTP error stops the run."""
-    response = requests.get(url)
+    """Get a Manifold API URL. An HTTP error, or no response within 30
+    seconds, stops the run instead of leaving it hanging."""
+    response = requests.get(url, timeout=30)
     response.raise_for_status()
     return response.json()
 
