@@ -110,3 +110,53 @@ def propose_code(title):
         if content_words == 2:
             break
     return "-".join(code_words)
+
+
+def new_rows(issue, texts, existing):
+    """Return links.csv rows for an issue and its texts that aren't listed
+    yet. Existing rows are matched by Manifold id, so codes that editors
+    have changed are left alone."""
+    listed_ids = {row["manifold_id"] for row in existing}
+    used_paths = {row["path"] for row in existing}
+    rows = []
+    if issue["project_id"] not in listed_ids:
+        rows.append(
+            {
+                "path": str(issue["number"]),
+                "kind": "issue",
+                "manifold_id": issue["project_id"],
+                "category": "",
+                "title": issue["title"],
+                "subtitle": "",
+                "target": f"{BASE_URL}/projects/{issue['project_slug']}",
+            }
+        )
+    for text in texts:
+        if text["id"] in listed_ids:
+            continue
+        path = unused_path(
+            f"{issue['number']}/{propose_code(text['title'])}", used_paths
+        )
+        used_paths.add(path)
+        rows.append(
+            {
+                "path": path,
+                "kind": "text",
+                "manifold_id": text["id"],
+                "category": text["category"],
+                "title": text["title"],
+                "subtitle": text["subtitle"],
+                "target": text["target"],
+            }
+        )
+    return rows
+
+
+def unused_path(path, used_paths):
+    """Return path, or path-2, path-3, ... if it's already taken."""
+    candidate = path
+    number = 2
+    while candidate in used_paths:
+        candidate = f"{path}-{number}"
+        number += 1
+    return candidate
