@@ -168,3 +168,9 @@ def issue_number(text):
     if not text.isdigit() or int(text) < 1:
         raise argparse.ArgumentTypeError(f"issue must be 1 or higher, not {text!r}")
     return int(text)
+
+
+def refresh_rows(rows, current):
+    """Update each row's title, subtitle and target from current_targets().
+    Paths never change; rows missing from Manifold keep their last values."""
+    return [row | current.get(row["manifold_id"], {}) for row in rows]
