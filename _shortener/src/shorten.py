@@ -14,6 +14,11 @@ JOURNAL_SLUG = "hml"
 TEMPLATE = Path(__file__).parent.parent / "templates" / "redirect.html"
 COLUMNS = ["path", "kind", "manifold_id", "category", "title", "subtitle", "target"]
 
+# Allowed links.csv paths: "1" for an issue, "1/some-code" for a text.
+PATH_PATTERNS = {
+    "issue": re.compile(r"[1-9][0-9]*"),
+    "text": re.compile(r"[1-9][0-9]*/[a-z0-9]+(-[a-z0-9]+)*"),
+}
 # Small words that don't count toward the two content words in a short code.
 STOPWORDS = set(
     "a an and as at by for from in into is it its of on or the to with".split()
@@ -219,3 +224,19 @@ def write_links(csv_path, rows):
         writer = csv.DictWriter(f, fieldnames=COLUMNS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+
+
+def validate_links(rows):
+    """Return a list of problems with links.csv rows; empty means all good."""
+    problems = []
+    seen = set()
+    for row in rows:
+        path = row["path"]
+        if row["kind"] not in PATH_PATTERNS:
+            problems.append(f"{path}: unknown kind {row['kind']!r}")
+        elif not PATH_PATTERNS[row["kind"]].fullmatch(path):
+            problems.append(f"{path}: not a valid {row['kind']} path")
+        if path in seen:
+            problems.append(f"{path}: path is used more than once")
+        seen.add(path)
+    return problems
