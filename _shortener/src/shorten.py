@@ -1,6 +1,7 @@
 """Generate short redirect URLs for HML texts published on CUNY Manifold."""
 
 import argparse
+import csv
 import html
 import json
 import re
@@ -11,6 +12,7 @@ from string import Template
 BASE_URL = "https://cuny.manifoldapp.org"
 JOURNAL_SLUG = "hml"
 TEMPLATE = Path(__file__).parent.parent / "templates" / "redirect.html"
+COLUMNS = ["path", "kind", "manifold_id", "category", "title", "subtitle", "target"]
 
 # Small words that don't count toward the two content words in a short code.
 STOPWORDS = set(
@@ -203,3 +205,17 @@ def write_pages(rows, site_root):
         page = site_root / row["path"] / "index.html"
         page.parent.mkdir(parents=True, exist_ok=True)
         page.write_text(render_page(row), encoding="utf-8")
+
+
+def read_links(csv_path):
+    """Read links.csv into a list of row dicts."""
+    with open(csv_path, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def write_links(csv_path, rows):
+    """Write rows to links.csv with the columns in a fixed order."""
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=COLUMNS, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
