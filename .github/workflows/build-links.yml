@@ -1,0 +1,56 @@
+# Builds the short links on docs.humanitiesmethods.org from _shortener/links.csv:
+# runs the tests, refreshes each link's target from Manifold, writes the
+# redirect pages (1/index.html, 1/<code>/index.html, ...) and commits them.
+# GitHub Pages then publishes that commit like any other push to gh-pages.
+name: Build short links
+
+on:
+  # Adds a "Run workflow" button to the Actions tab.
+  workflow_dispatch:
+  # Rebuilds when links.csv or the generator changes.
+  push:
+    branches: [gh-pages]
+    paths: ["_shortener/**"]
+  # Weekly check that every link still points at Manifold's current URL.
+  schedule:
+    - cron: "0 7 * * 1" # Mondays, 07:00 UTC
+
+# Lets the job push the generated pages back to the repo.
+permissions:
+  contents: write
+
+# Never let two runs push at the same time.
+concurrency:
+  group: build-short-links
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: _shortener
+    steps:
+      # Exact versions: setup-uv no longer publishes "@v10"-style tags.
+      - uses: actions/checkout@v7.0.1
+
+      - uses: astral-sh/setup-uv@v10.2.0
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      # Includes the check of links.csv, so a bad hand edit stops here.
+      - name: Run tests
+        run: uv run pytest
+
+      - name: Refresh targets and write redirect pages
+        run: uv run python src/shorten.py build
+
+      - name: Commit and push any changes
+        working-directory: .
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _shortener/links.csv ':(glob)[1-9]*/**/index.html'
+          git diff --cached --quiet || git commit -m "Update short link pages"
+          git push
