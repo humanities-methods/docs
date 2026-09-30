@@ -9,8 +9,11 @@ saved on 2026-09-30 so these tests never touch the network:
   (trimmed to the texts and categories; user records removed)
 """
 
+import argparse
 import json
 from pathlib import Path
+
+import pytest
 
 import shorten
 
@@ -40,6 +43,40 @@ def issue_1():
         "project_slug": "humanities-methods-in-librarianship-no-1",
         "title": "Humanities Methods in Librarianship, no. 1",
     }
+
+
+def issue_1_texts():
+    return shorten.parse_texts(load_fixture("project_issue_1.json"))
+
+
+# Rows as they appear in links.csv. Pass keyword arguments to change a field,
+# e.g. metadata_row(path="1/care").
+
+
+def issue_row(**changes):
+    row = {
+        "path": "1",
+        "kind": "issue",
+        "manifold_id": ISSUE_1_PROJECT_ID,
+        "category": "",
+        "title": "Humanities Methods in Librarianship, no. 1",
+        "subtitle": "",
+        "target": ISSUE_1_TARGET,
+    }
+    return row | changes
+
+
+def metadata_row(**changes):
+    row = {
+        "path": "1/metadata-as-care",
+        "kind": "text",
+        "manifold_id": METADATA_ID,
+        "category": "Peer Reviewed",
+        "title": METADATA_TITLE,
+        "subtitle": "Lisa M. Longenecker",
+        "target": METADATA_TARGET,
+    }
+    return row | changes
 
 
 # --- Reading the Manifold API responses ---
@@ -207,3 +244,148 @@ def test_code_for_a_review_uses_the_reviewed_title():
 def test_code_for_a_review_without_a_colon():
     title = "Review of How to Study Public Life"
     assert shorten.propose_code(title) == "review-how-to-study"
+
+
+# --- `add`: new rows for an issue ---
+
+
+def test_new_rows_for_issue_1_match_the_planned_short_links():
+    rows = shorten.new_rows(issue_1(), issue_1_texts(), [])
+    assert [row["path"] for row in rows] == [
+        "1",
+        "1/metadata-as-care",
+        "1/embracing-place",
+        "1/reading-disrepair",
+        "1/ode-to-the-abode",
+        "1/pretend-its-magic",
+        "1/review-triptych",
+        "1/review-hayeks-bastards",
+        "1/review-how-to-study",
+    ]
+
+
+def test_new_rows_start_with_a_row_for_the_issue_itself():
+    assert shorten.new_rows(issue_1(), [], []) == [issue_row()]
+
+
+def test_new_rows_describe_each_text():
+    rows = shorten.new_rows(issue_1(), issue_1_texts(), [])
+    assert rows[1] == metadata_row()
+
+
+def test_new_rows_add_nothing_when_run_twice():
+    first_run = shorten.new_rows(issue_1(), issue_1_texts(), [])
+    assert shorten.new_rows(issue_1(), issue_1_texts(), first_run) == []
+
+
+def test_new_rows_skip_a_text_whose_code_an_editor_changed():
+    existing = [issue_row(), metadata_row(path="1/care")]
+    rows = shorten.new_rows(issue_1(), issue_1_texts()[:1], existing)
+    assert rows == []
+
+
+def test_new_rows_number_a_repeated_code():
+    texts = [
+        {
+            "id": "a",
+            "title": "Review of Triptych",
+            "subtitle": "",
+            "category": "Book Reviews",
+            "target": "https://example.org/a",
+        },
+        {
+            "id": "b",
+            "title": "Review of Triptych: A Second Look",
+            "subtitle": "",
+            "category": "Book Reviews",
+            "target": "https://example.org/b",
+        },
+    ]
+    rows = shorten.new_rows(issue_1(), texts, [])
+    assert [row["path"] for row in rows] == [
+        "1",
+        "1/review-triptych",
+        "1/review-triptych-2",
+    ]
+
+
+def test_new_rows_avoid_a_code_already_in_links_csv():
+    existing = [issue_row(), metadata_row()]
+    texts = [
+        {
+            "id": "new",
+            "title": "Metadata as Care, Again",
+            "subtitle": "",
+            "category": "Peer Reviewed",
+            "target": "https://example.org/new",
+        }
+    ]
+    rows = shorten.new_rows(issue_1(), texts, existing)
+    assert [row["path"] for row in rows] == ["1/metadata-as-care-2"]
+
+
+# --- `add`: which issue numbers are allowed ---
+
+
+def test_issue_number_accepts_1():
+    assert shorten.issue_number("1") == 1
+
+
+def test_issue_number_refuses_0():
+    with pytest.raises(argparse.ArgumentTypeError):
+        shorten.issue_number("0")
+
+
+def test_issue_number_refuses_minus_1():
+    with pytest.raises(argparse.ArgumentTypeError):
+        shorten.issue_number("-1")
+
+
+def test_issue_number_refuses_words():
+    with pytest.raises(argparse.ArgumentTypeError):
+        shorten.issue_number("one")
+
+
+# --- `build`: refreshing targets from Manifold ---
+
+
+def test_refresh_rows_follow_a_changed_manifold_slug():
+    new_target = "https://cuny.manifoldapp.org/read/metadata-as-care-new-slug"
+    current = {
+        METADATA_ID: {
+            "title": METADATA_TITLE,
+            "subtitle": "Lisa M. Longenecker",
+            "target": new_target,
+        }
+    }
+    rows = shorten.refresh_rows([metadata_row()], current)
+    assert rows == [metadata_row(target=new_target)]
+
+
+def test_refresh_rows_update_the_title_but_never_the_path():
+    current = {
+        METADATA_ID: {
+            "title": "Metadata as Care (Revised)",
+            "subtitle": "Lisa M. Longenecker",
+            "target": METADATA_TARGET,
+        }
+    }
+    rows = shorten.refresh_rows([metadata_row()], current)
+    assert rows == [metadata_row(title="Metadata as Care (Revised)")]
+
+
+def test_refresh_rows_keep_the_last_target_when_a_text_is_missing():
+    assert shorten.refresh_rows([metadata_row()], {}) == [metadata_row()]
+
+
+def test_refresh_rows_update_the_issue_row_too():
+    new_target = "https://cuny.manifoldapp.org/projects/hml-issue-1"
+    current = {
+        ISSUE_1_PROJECT_ID: {
+            "title": "Humanities Methods in Librarianship, no. 1",
+            "subtitle": "",
+            "target": new_target,
+        }
+    }
+    rows = shorten.refresh_rows([issue_row()], current)
+    assert rows == [issue_row(target=new_target)]
