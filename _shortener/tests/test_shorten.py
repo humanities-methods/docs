@@ -526,3 +526,17 @@ def test_validate_links_flags_an_unknown_kind():
 def test_committed_links_csv_is_valid():
     # Guards hand edits: CI runs this before building any pages.
     assert shorten.validate_links(shorten.read_links(LINKS_CSV)) == []
+
+
+# --- `add`: finding the requested issue ---
+
+
+def test_find_issue_returns_the_requested_issue():
+    issues = shorten.parse_issues(load_fixture("journal_issues.json"))
+    assert shorten.find_issue(issues, 1) == issue_1()
+
+
+def test_find_issue_explains_an_issue_not_on_manifold_yet():
+    issues = shorten.parse_issues(load_fixture("journal_issues.json"))
+    with pytest.raises(SystemExit, match="Issue 2 isn't on Manifold yet"):
+        shorten.find_issue(issues, 2)

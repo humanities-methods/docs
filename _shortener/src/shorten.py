@@ -5,6 +5,7 @@ import csv
 import html
 import json
 import re
+import sys
 import unicodedata
 from pathlib import Path
 from string import Template
@@ -268,10 +269,18 @@ def fetch_project(project_id):
     return fetch_json(f"{API_URL}/projects/{project_id}?include=texts,textCategories")
 
 
+def find_issue(issues, number):
+    """Return the issue with this number, or stop with a readable message."""
+    for issue in issues:
+        if issue["number"] == number:
+            return issue
+    found = ", ".join(str(issue["number"]) for issue in issues)
+    sys.exit(f"Issue {number} isn't on Manifold yet (found issues: {found}).")
+
+
 def add(number, csv_path=LINKS_CSV):
     """Append rows for one issue to links.csv and print the new short URLs."""
-    issues_by_number = {item["number"]: item for item in fetch_issues()}
-    issue = issues_by_number[number]
+    issue = find_issue(fetch_issues(), number)
     rows = read_links(csv_path) if csv_path.exists() else []
     added = new_rows(issue, parse_texts(fetch_project(issue["project_id"])), rows)
     write_links(csv_path, rows + added)
