@@ -1,5 +1,6 @@
 """Generate short redirect URLs for HML texts published on CUNY Manifold."""
 
+import argparse
 import re
 import unicodedata
 
@@ -160,3 +161,10 @@ def unused_path(path, used_paths):
         candidate = f"{path}-{number}"
         number += 1
     return candidate
+
+
+def issue_number(text):
+    """Check the issue number given to `add`: only issues 1 and up."""
+    if not text.isdigit() or int(text) < 1:
+        raise argparse.ArgumentTypeError(f"issue must be 1 or higher, not {text!r}")
+    return int(text)
