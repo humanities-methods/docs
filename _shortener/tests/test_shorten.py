@@ -531,6 +531,30 @@ def test_validate_links_flags_an_unknown_kind():
     assert len(problems) == 1
 
 
+def test_validate_links_flags_an_unquoted_comma(tmp_path):
+    csv_path = tmp_path / "links.csv"
+    csv_path.write_text(
+        "path,kind,manifold_id,category,title,subtitle,target\n"
+        "1/care,text,id-1,Peer Reviewed,Care, Again,Author,https://example.org/a\n",
+        encoding="utf-8",
+    )
+    problems = shorten.validate_links(shorten.read_links(csv_path))
+    assert len(problems) == 1
+    assert "columns" in problems[0]
+
+
+def test_validate_links_flags_a_missing_value(tmp_path):
+    csv_path = tmp_path / "links.csv"
+    csv_path.write_text(
+        "path,kind,manifold_id,category,title,subtitle,target\n"
+        "1/care,text,id-1,Peer Reviewed,Care,Author\n",
+        encoding="utf-8",
+    )
+    problems = shorten.validate_links(shorten.read_links(csv_path))
+    assert len(problems) == 1
+    assert "columns" in problems[0]
+
+
 def test_committed_links_csv_is_valid():
     # Guards hand edits: CI runs this before building any pages.
     assert shorten.validate_links(shorten.read_links(LINKS_CSV)) == []

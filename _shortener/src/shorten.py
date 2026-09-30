@@ -240,6 +240,13 @@ def validate_links(rows):
             problems.append(f"{path}: unknown kind {row['kind']!r}")
         elif not PATH_PATTERNS[row["kind"]].fullmatch(path):
             problems.append(f"{path}: not a valid {row['kind']} path")
+        # csv.DictReader files extra values under the key None and fills
+        # missing values with None.
+        if None in row or None in row.values():
+            problems.append(
+                f"{path}: wrong number of columns"
+                " (put quotes around a value that contains a comma)"
+            )
         if path in seen:
             problems.append(f"{path}: path is used more than once")
         seen.add(path)
