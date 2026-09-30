@@ -1,11 +1,16 @@
 """Generate short redirect URLs for HML texts published on CUNY Manifold."""
 
 import argparse
+import html
+import json
 import re
 import unicodedata
+from pathlib import Path
+from string import Template
 
 BASE_URL = "https://cuny.manifoldapp.org"
 JOURNAL_SLUG = "hml"
+TEMPLATE = Path(__file__).parent.parent / "templates" / "redirect.html"
 
 # Small words that don't count toward the two content words in a short code.
 STOPWORDS = set(
@@ -174,3 +179,18 @@ def refresh_rows(rows, current):
     """Update each row's title, subtitle and target from current_targets().
     Paths never change; rows missing from Manifold keep their last values."""
     return [row | current.get(row["manifold_id"], {}) for row in rows]
+
+
+def render_page(row):
+    """Return the redirect page for one links.csv row."""
+    description = ""
+    if row["subtitle"]:
+        description = (
+            f'<meta property="og:description" content="{html.escape(row["subtitle"])}">'
+        )
+    return Template(TEMPLATE.read_text(encoding="utf-8")).substitute(
+        title=html.escape(row["title"]),
+        description=description,
+        target=html.escape(row["target"]),
+        target_js=json.dumps(row["target"]),
+    )
