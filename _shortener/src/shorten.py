@@ -117,7 +117,8 @@ def current_targets(project_response):
 def propose_code(title):
     """Propose a short code from a title: the words of the main title (before
     any colon) up to and including the second content word. Book reviews
-    ("Review of X") become "review-" plus the code for X."""
+    ("Review of X") become "review-" plus the code for X. A title with no
+    Latin letters or digits gets "text", for an editor to rename."""
     if title.startswith("Review of "):
         return "review-" + propose_code(title.removeprefix("Review of "))
     # Drop straight and curly apostrophes so "It’s" becomes "its".
@@ -132,7 +133,7 @@ def propose_code(title):
             content_words += 1
         if content_words == 2:
             break
-    return "-".join(code_words)
+    return "-".join(code_words) or "text"
 
 
 def new_rows(issue, texts, existing):

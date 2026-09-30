@@ -247,6 +247,14 @@ def test_code_for_a_review_without_a_colon():
     assert shorten.propose_code(title) == "review-how-to-study"
 
 
+def test_code_for_a_title_without_latin_letters_is_text():
+    assert shorten.propose_code("日本の図書館") == "text"
+
+
+def test_code_for_a_review_of_a_title_without_latin_letters():
+    assert shorten.propose_code("Review of Библиотека") == "review-text"
+
+
 # --- `add`: new rows for an issue ---
 
 
