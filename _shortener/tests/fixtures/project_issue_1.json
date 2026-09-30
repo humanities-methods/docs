@@ -1,0 +1,709 @@
+{
+  "data": {
+    "id": "3691fe2b-8a51-4d25-880e-14997c4074e0",
+    "type": "projects",
+    "attributes": {
+      "abilities": {
+        "readDrafts": false,
+        "readLog": false,
+        "manageResources": false,
+        "createResources": false,
+        "manageResourceCollections": false,
+        "createResourceCollections": false,
+        "managePermissions": false,
+        "createPermissions": false,
+        "manageTexts": false,
+        "createTexts": false,
+        "manageTwitterQueries": false,
+        "createTwitterQueries": false,
+        "manageEvents": false,
+        "manageSocials": false,
+        "updateMakers": false,
+        "manageProjectExportations": false,
+        "createEntitlements": false,
+        "manageEntitlements": false,
+        "fullyRead": true,
+        "createProjectExportations": false,
+        "engagePublicly": false,
+        "create": false,
+        "read": true,
+        "update": false,
+        "delete": false
+      },
+      "title": "Humanities Methods in Librarianship, no. 1",
+      "subtitle": null,
+      "subtitleFormatted": "",
+      "subtitlePlaintext": "",
+      "titleFormatted": "Humanities Methods in Librarianship, no. 1",
+      "titlePlaintext": "Humanities Methods in Librarianship, no. 1",
+      "publicationDate": null,
+      "createdAt": "2026-02-26T20:05:04.358Z",
+      "updatedAt": "2026-09-30T17:00:50.758Z",
+      "slug": "humanities-methods-in-librarianship-no-1",
+      "avatarColor": "primary",
+      "avatarMeta": {
+        "small": {
+          "width": 320,
+          "height": 320
+        },
+        "smallSquare": {
+          "width": 320,
+          "height": 320
+        },
+        "smallLandscape": {
+          "width": 320,
+          "height": 200
+        },
+        "smallPortrait": {
+          "width": 200,
+          "height": 320
+        },
+        "medium": {
+          "width": 640,
+          "height": 640
+        },
+        "mediumSquare": {
+          "width": 640,
+          "height": 640
+        },
+        "mediumLandscape": {
+          "width": 640,
+          "height": 400
+        },
+        "mediumPortrait": {
+          "width": 400,
+          "height": 640
+        },
+        "largeLandscape": {
+          "width": 1280,
+          "height": 800
+        },
+        "original": {
+          "width": 500,
+          "height": 500
+        }
+      },
+      "draft": false,
+      "finished": false,
+      "creatorNames": "",
+      "orderedCollaboratorNames": "",
+      "recentlyUpdated": true,
+      "updated": true,
+      "avatarStyles": {
+        "small": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/small-116354f40e44223b92b5796247e37ca7.png",
+        "smallSquare": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/small_square-d17b8a7d8169ad332bd6e9c7759a651b.png",
+        "smallLandscape": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/small_landscape-f6538012888931338833234a8cd19444.png",
+        "smallPortrait": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/small_portrait-e5c9a304488fe06c03c0f5e36b3e7e74.png",
+        "medium": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/medium-00b59d7dfa7320da68c2a29b2f57fa18.png",
+        "mediumSquare": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/medium_square-ca8c019e181670e6956256f7a5d734ef.png",
+        "mediumLandscape": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/medium_landscape-8b77d66dabdd7c9defc07207bfd04a30.png",
+        "mediumPortrait": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/medium_portrait-0f10fde4b16ded285cb09f96ef914965.png",
+        "largeLandscape": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/large_landscape-9d8318c89f01acdbd4c931e15acdbde6.png",
+        "original": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/87586d2810c60bb53dd701b002324c11.png"
+      },
+      "avatarAltText": null,
+      "isJournalIssue": true,
+      "entitlementSubjectUrl": "gid://entitlements/Project/3691fe2b-8a51-4d25-880e-14997c4074e0",
+      "markedForPurgeAt": null,
+      "collectedByCurrentUser": false,
+      "metadata": {
+        "rights": "Humanities Methods in Librarianship is licensed under a Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0) International license, except where otherwise noted.",
+        "publisher": "City University of New York",
+        "publisherPlace": "New York, NY"
+      },
+      "metadataFormatted": {
+        "rights": "Humanities Methods in Librarianship is licensed under a Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0) International license, except where otherwise noted.",
+        "publisher": "City University of New York",
+        "publisherPlace": "New York, NY"
+      },
+      "metadataProperties": [
+        "seriesTitle",
+        "containerTitle",
+        "isbn",
+        "issn",
+        "doi",
+        "originalPublisher",
+        "originalPublisherPlace",
+        "originalTitle",
+        "publisher",
+        "publisherPlace",
+        "version",
+        "seriesNumber",
+        "edition",
+        "issue",
+        "volume",
+        "rights",
+        "rightsTerritory",
+        "restrictions",
+        "rightsHolder",
+        "resourcesDoi",
+        "citationOverride"
+      ],
+      "externalIdentifier": null,
+      "heroStyles": {},
+      "heroAltText": null,
+      "coverStyles": {},
+      "coverAltText": null,
+      "hashtag": null,
+      "description": null,
+      "featured": false,
+      "restrictedAccess": false,
+      "openAccess": false,
+      "restrictedAccessHeading": null,
+      "restrictedAccessBody": null,
+      "restrictedAccessBodyFormatted": "",
+      "purchaseUrl": null,
+      "purchasePriceMoney": "$0.00",
+      "purchasePriceCurrency": null,
+      "purchasePrice": null,
+      "purchaseCallToAction": null,
+      "descriptionFormatted": "",
+      "resourceKinds": [],
+      "darkMode": false,
+      "imageCredits": null,
+      "imageCreditsFormatted": "",
+      "tagList": [],
+      "resourceCollectionsCount": 0,
+      "resourcesCount": 0,
+      "citations": {},
+      "hideActivity": false,
+      "standaloneMode": "disabled",
+      "downloadUrl": null,
+      "downloadCallToAction": null,
+      "pendingSlug": "humanities-methods-in-librarianship-no-1",
+      "standaloneModePressBarText": null,
+      "standaloneModePressBarUrl": null,
+      "eventCount": 9,
+      "eventTypes": [
+        "text_added",
+        "project_created"
+      ],
+      "resourceTags": [],
+      "disableEngagement": false,
+      "journalIssueNumber": "1",
+      "journalIssuePendingSortTitle": null,
+      "journalVolumeNumber": null,
+      "socialDescription": null,
+      "socialTitle": null,
+      "socialImageStyles": {},
+      "textsNav": [
+        {
+          "id": "306e4de4-0664-46fd-beba-b05ce6989a41",
+          "label": "Metadata as Care: Cultivating Meaningful Access in Digital Archives"
+        },
+        {
+          "id": "71ff9377-37fa-479f-adde-714b4127982a",
+          "label": "Review of Triptych: Death, AI, and Librarianship"
+        },
+        {
+          "id": "d05cfb88-3ac3-443e-84ba-ebbca19b22a5",
+          "label": "Ode to The Abode of All Known"
+        },
+        {
+          "id": "ace2776b-77b3-4133-bc7c-b4588e3f26de",
+          "label": "Embracing Place and Naming Placelessness in Librarianship"
+        },
+        {
+          "id": "8e4dfe10-c87f-4d67-85e0-779d0185830c",
+          "label": "Pretend It’s Magic: The Story of a Library Management System"
+        },
+        {
+          "id": "1c06cc2a-10ed-4bea-b59d-76646deb039a",
+          "label": "Review of Hayek’s Bastards: The Neoliberal Roots of the Populist Right"
+        },
+        {
+          "id": "12adcaf6-dd8c-40d7-bbed-fece0327ca93",
+          "label": "Reading Disrepair: Library Space and Institutional Value"
+        },
+        {
+          "id": "7b53f79d-a2f8-4ccd-b5e7-46c9e85f436a",
+          "label": "Review of How to Study Public Life"
+        }
+      ],
+      "journalNav": {
+        "id": "3d645582-2b7d-4ff6-8c63-e72872e86961",
+        "label": "Humanities Methods in Librarianship"
+      },
+      "journalIssuesNav": []
+    },
+    "relationships": {
+      "texts": {
+        "data": [
+          {
+            "id": "ace2776b-77b3-4133-bc7c-b4588e3f26de",
+            "type": "texts"
+          },
+          {
+            "id": "1c06cc2a-10ed-4bea-b59d-76646deb039a",
+            "type": "texts"
+          },
+          {
+            "id": "7b53f79d-a2f8-4ccd-b5e7-46c9e85f436a",
+            "type": "texts"
+          },
+          {
+            "id": "71ff9377-37fa-479f-adde-714b4127982a",
+            "type": "texts"
+          },
+          {
+            "id": "d05cfb88-3ac3-443e-84ba-ebbca19b22a5",
+            "type": "texts"
+          },
+          {
+            "id": "8e4dfe10-c87f-4d67-85e0-779d0185830c",
+            "type": "texts"
+          },
+          {
+            "id": "12adcaf6-dd8c-40d7-bbed-fece0327ca93",
+            "type": "texts"
+          },
+          {
+            "id": "306e4de4-0664-46fd-beba-b05ce6989a41",
+            "type": "texts"
+          }
+        ]
+      },
+      "publishedTexts": {
+        "data": [
+          {
+            "id": "306e4de4-0664-46fd-beba-b05ce6989a41",
+            "type": "texts"
+          },
+          {
+            "id": "71ff9377-37fa-479f-adde-714b4127982a",
+            "type": "texts"
+          },
+          {
+            "id": "d05cfb88-3ac3-443e-84ba-ebbca19b22a5",
+            "type": "texts"
+          },
+          {
+            "id": "ace2776b-77b3-4133-bc7c-b4588e3f26de",
+            "type": "texts"
+          },
+          {
+            "id": "8e4dfe10-c87f-4d67-85e0-779d0185830c",
+            "type": "texts"
+          },
+          {
+            "id": "1c06cc2a-10ed-4bea-b59d-76646deb039a",
+            "type": "texts"
+          },
+          {
+            "id": "12adcaf6-dd8c-40d7-bbed-fece0327ca93",
+            "type": "texts"
+          },
+          {
+            "id": "7b53f79d-a2f8-4ccd-b5e7-46c9e85f436a",
+            "type": "texts"
+          }
+        ]
+      },
+      "textCategories": {
+        "data": [
+          {
+            "id": "b04ddb4c-0614-4fed-9390-6976ff2bc4ae",
+            "type": "categories"
+          },
+          {
+            "id": "47a98389-3e1f-40fd-b3be-c0c5aef075d1",
+            "type": "categories"
+          },
+          {
+            "id": "919261ae-7795-4ccb-8655-4d56c1344b36",
+            "type": "categories"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "partial": false
+    }
+  },
+  "meta": {
+    "pagination": {
+      "skipped": true
+    }
+  },
+  "included": [
+    {
+      "id": "b04ddb4c-0614-4fed-9390-6976ff2bc4ae",
+      "type": "categories",
+      "attributes": {
+        "abilities": {
+          "create": false,
+          "read": true,
+          "update": false,
+          "delete": false
+        },
+        "title": "Peer Reviewed",
+        "position": 1
+      },
+      "meta": {
+        "partial": false
+      }
+    },
+    {
+      "id": "47a98389-3e1f-40fd-b3be-c0c5aef075d1",
+      "type": "categories",
+      "attributes": {
+        "abilities": {
+          "create": false,
+          "read": true,
+          "update": false,
+          "delete": false
+        },
+        "title": "CREATIVE",
+        "position": 2
+      },
+      "meta": {
+        "partial": false
+      }
+    },
+    {
+      "id": "919261ae-7795-4ccb-8655-4d56c1344b36",
+      "type": "categories",
+      "attributes": {
+        "abilities": {
+          "create": false,
+          "read": true,
+          "update": false,
+          "delete": false
+        },
+        "title": "Book Reviews",
+        "position": 3
+      },
+      "meta": {
+        "partial": false
+      }
+    },
+    {
+      "id": "12adcaf6-dd8c-40d7-bbed-fece0327ca93",
+      "type": "texts",
+      "attributes": {
+        "title": "Reading Disrepair: Library Space and Institutional Value",
+        "creatorNames": "",
+        "createdAt": "2026-09-14T21:30:53.087Z",
+        "updatedAt": "2026-09-30T16:58:47.236Z",
+        "published": true,
+        "annotationsCount": 0,
+        "highlightsCount": 0,
+        "age": 16,
+        "position": 3,
+        "publicationDate": null,
+        "subtitle": "Vaughn X. Haynes",
+        "slug": "reading-disrepair-library-space-and-institutional-value-a86185a9-7c76-4bb1-9f60-694562b31fec",
+        "description": null,
+        "ignoreAccessRestrictions": false,
+        "titleFormatted": "Reading Disrepair: Library Space and Institutional Value",
+        "titlePlaintext": "Reading Disrepair: Library Space and Institutional Value",
+        "subtitleFormatted": "Vaughn X. Haynes",
+        "subtitlePlaintext": "Vaughn X. Haynes",
+        "descriptionFormatted": "",
+        "descriptionPlaintext": "",
+        "coverStyles": {},
+        "coverAltText": null,
+        "markedForPurgeAt": null,
+        "collectedByCurrentUser": false
+      },
+      "relationships": {
+        "category": {
+          "data": {
+            "id": "b04ddb4c-0614-4fed-9390-6976ff2bc4ae",
+            "type": "categories"
+          }
+        }
+      },
+      "meta": {
+        "partial": true
+      }
+    },
+    {
+      "id": "1c06cc2a-10ed-4bea-b59d-76646deb039a",
+      "type": "texts",
+      "attributes": {
+        "title": "Review of Hayek’s Bastards: The Neoliberal Roots of the Populist Right",
+        "creatorNames": "",
+        "createdAt": "2026-09-16T18:20:54.266Z",
+        "updatedAt": "2026-09-18T13:47:39.552Z",
+        "published": true,
+        "annotationsCount": 0,
+        "highlightsCount": 0,
+        "age": 14,
+        "position": 2,
+        "publicationDate": null,
+        "subtitle": "Michael Kirby Hall",
+        "slug": "review-of-hayek-s-bastards-the-neoliberal-roots-of-the-populist-right-5e6166c8-79c3-4aca-97e4-10a0d362aa7a",
+        "description": null,
+        "ignoreAccessRestrictions": false,
+        "titleFormatted": "Review of Hayek’s Bastards: The Neoliberal Roots of the Populist Right",
+        "titlePlaintext": "Review of Hayek’s Bastards: The Neoliberal Roots of the Populist Right",
+        "subtitleFormatted": "Michael Kirby Hall",
+        "subtitlePlaintext": "Michael Kirby Hall",
+        "descriptionFormatted": "",
+        "descriptionPlaintext": "",
+        "coverStyles": {},
+        "coverAltText": null,
+        "markedForPurgeAt": null,
+        "collectedByCurrentUser": false
+      },
+      "relationships": {
+        "category": {
+          "data": {
+            "id": "919261ae-7795-4ccb-8655-4d56c1344b36",
+            "type": "categories"
+          }
+        }
+      },
+      "meta": {
+        "partial": true
+      }
+    },
+    {
+      "id": "306e4de4-0664-46fd-beba-b05ce6989a41",
+      "type": "texts",
+      "attributes": {
+        "title": "Metadata as Care: Cultivating Meaningful Access in Digital Archives",
+        "creatorNames": "",
+        "createdAt": "2026-09-30T16:57:18.296Z",
+        "updatedAt": "2026-09-30T17:00:50.690Z",
+        "published": true,
+        "annotationsCount": 0,
+        "highlightsCount": 0,
+        "age": 0,
+        "position": 1,
+        "publicationDate": null,
+        "subtitle": "Lisa M. Longenecker",
+        "slug": "metadata-as-care-cultivating-meaningful-access-in-digital-archives-ad5fe943-33ae-40e7-96f5-82695273d06f",
+        "description": null,
+        "ignoreAccessRestrictions": false,
+        "titleFormatted": "Metadata as Care: Cultivating Meaningful Access in Digital Archives",
+        "titlePlaintext": "Metadata as Care: Cultivating Meaningful Access in Digital Archives",
+        "subtitleFormatted": "Lisa M. Longenecker",
+        "subtitlePlaintext": "Lisa M. Longenecker",
+        "descriptionFormatted": "",
+        "descriptionPlaintext": "",
+        "coverStyles": {},
+        "coverAltText": null,
+        "markedForPurgeAt": null,
+        "collectedByCurrentUser": false
+      },
+      "relationships": {
+        "category": {
+          "data": {
+            "id": "b04ddb4c-0614-4fed-9390-6976ff2bc4ae",
+            "type": "categories"
+          }
+        }
+      },
+      "meta": {
+        "partial": true
+      }
+    },
+    {
+      "id": "71ff9377-37fa-479f-adde-714b4127982a",
+      "type": "texts",
+      "attributes": {
+        "title": "Review of Triptych: Death, AI, and Librarianship",
+        "creatorNames": "",
+        "createdAt": "2026-09-17T16:21:14.330Z",
+        "updatedAt": "2026-09-18T13:47:39.531Z",
+        "published": true,
+        "annotationsCount": 0,
+        "highlightsCount": 0,
+        "age": 13,
+        "position": 1,
+        "publicationDate": null,
+        "subtitle": "Joel Blechinger",
+        "slug": "review-of-triptych-death-ai-and-librarianship-dcee58c8-9f24-488c-bec2-25cc5a7b92d8",
+        "description": null,
+        "ignoreAccessRestrictions": false,
+        "titleFormatted": "Review of Triptych: Death, AI, and Librarianship",
+        "titlePlaintext": "Review of Triptych: Death, AI, and Librarianship",
+        "subtitleFormatted": "Joel Blechinger",
+        "subtitlePlaintext": "Joel Blechinger",
+        "descriptionFormatted": "",
+        "descriptionPlaintext": "",
+        "coverStyles": {},
+        "coverAltText": null,
+        "markedForPurgeAt": null,
+        "collectedByCurrentUser": false
+      },
+      "relationships": {
+        "category": {
+          "data": {
+            "id": "919261ae-7795-4ccb-8655-4d56c1344b36",
+            "type": "categories"
+          }
+        }
+      },
+      "meta": {
+        "partial": true
+      }
+    },
+    {
+      "id": "7b53f79d-a2f8-4ccd-b5e7-46c9e85f436a",
+      "type": "texts",
+      "attributes": {
+        "title": "Review of How to Study Public Life",
+        "creatorNames": "",
+        "createdAt": "2026-09-16T18:28:17.957Z",
+        "updatedAt": "2026-09-18T13:47:39.552Z",
+        "published": true,
+        "annotationsCount": 0,
+        "highlightsCount": 0,
+        "age": 14,
+        "position": 3,
+        "publicationDate": null,
+        "subtitle": "J. Morgan Rowe-Morris",
+        "slug": "review-of-how-to-study-public-life-4543ebe0-f7e3-4292-9e5b-1119abddffe4",
+        "description": null,
+        "ignoreAccessRestrictions": false,
+        "titleFormatted": "Review of How to Study Public Life",
+        "titlePlaintext": "Review of How to Study Public Life",
+        "subtitleFormatted": "J. Morgan Rowe-Morris",
+        "subtitlePlaintext": "J. Morgan Rowe-Morris",
+        "descriptionFormatted": "",
+        "descriptionPlaintext": "",
+        "coverStyles": {},
+        "coverAltText": null,
+        "markedForPurgeAt": null,
+        "collectedByCurrentUser": false
+      },
+      "relationships": {
+        "category": {
+          "data": {
+            "id": "919261ae-7795-4ccb-8655-4d56c1344b36",
+            "type": "categories"
+          }
+        }
+      },
+      "meta": {
+        "partial": true
+      }
+    },
+    {
+      "id": "8e4dfe10-c87f-4d67-85e0-779d0185830c",
+      "type": "texts",
+      "attributes": {
+        "title": "Pretend It’s Magic: The Story of a Library Management System",
+        "creatorNames": "",
+        "createdAt": "2026-09-18T13:42:10.360Z",
+        "updatedAt": "2026-09-18T13:51:25.425Z",
+        "published": true,
+        "annotationsCount": 0,
+        "highlightsCount": 0,
+        "age": 12,
+        "position": 2,
+        "publicationDate": null,
+        "subtitle": "Tara Kunesh",
+        "slug": "pretend-it-s-magic-the-story-of-a-library-management-system-e6f048c2-b058-4522-b323-33a819fd8f11",
+        "description": null,
+        "ignoreAccessRestrictions": false,
+        "titleFormatted": "Pretend It’s Magic: The Story of a Library Management System",
+        "titlePlaintext": "Pretend It’s Magic: The Story of a Library Management System",
+        "subtitleFormatted": "Tara Kunesh",
+        "subtitlePlaintext": "Tara Kunesh",
+        "descriptionFormatted": "",
+        "descriptionPlaintext": "",
+        "coverStyles": {},
+        "coverAltText": null,
+        "markedForPurgeAt": null,
+        "collectedByCurrentUser": false
+      },
+      "relationships": {
+        "category": {
+          "data": {
+            "id": "47a98389-3e1f-40fd-b3be-c0c5aef075d1",
+            "type": "categories"
+          }
+        }
+      },
+      "meta": {
+        "partial": true
+      }
+    },
+    {
+      "id": "ace2776b-77b3-4133-bc7c-b4588e3f26de",
+      "type": "texts",
+      "attributes": {
+        "title": "Embracing Place and Naming Placelessness in Librarianship",
+        "creatorNames": "",
+        "createdAt": "2026-09-16T17:52:42.769Z",
+        "updatedAt": "2026-09-30T16:58:47.236Z",
+        "published": true,
+        "annotationsCount": 0,
+        "highlightsCount": 0,
+        "age": 14,
+        "position": 2,
+        "publicationDate": null,
+        "subtitle": "Nick Szydlowski",
+        "slug": "embracing-place-and-naming-placelessness-in-librarianship-7db506b8-ff6e-42b8-960b-aedb72496a84",
+        "description": null,
+        "ignoreAccessRestrictions": false,
+        "titleFormatted": "Embracing Place and Naming Placelessness in Librarianship",
+        "titlePlaintext": "Embracing Place and Naming Placelessness in Librarianship",
+        "subtitleFormatted": "Nick Szydlowski",
+        "subtitlePlaintext": "Nick Szydlowski",
+        "descriptionFormatted": "",
+        "descriptionPlaintext": "",
+        "coverStyles": {},
+        "coverAltText": null,
+        "markedForPurgeAt": null,
+        "collectedByCurrentUser": false
+      },
+      "relationships": {
+        "category": {
+          "data": {
+            "id": "b04ddb4c-0614-4fed-9390-6976ff2bc4ae",
+            "type": "categories"
+          }
+        }
+      },
+      "meta": {
+        "partial": true
+      }
+    },
+    {
+      "id": "d05cfb88-3ac3-443e-84ba-ebbca19b22a5",
+      "type": "texts",
+      "attributes": {
+        "title": "Ode to The Abode of All Known",
+        "creatorNames": "",
+        "createdAt": "2026-09-18T13:11:57.216Z",
+        "updatedAt": "2026-09-18T13:50:32.088Z",
+        "published": true,
+        "annotationsCount": 0,
+        "highlightsCount": 0,
+        "age": 12,
+        "position": 1,
+        "publicationDate": null,
+        "subtitle": "Sean Francis",
+        "slug": "ode-to-the-abode-of-all-known-3a52e42b-e78e-4e67-ad4a-224c1cb2788c",
+        "description": null,
+        "ignoreAccessRestrictions": false,
+        "titleFormatted": "Ode to The Abode of All Known",
+        "titlePlaintext": "Ode to The Abode of All Known",
+        "subtitleFormatted": "Sean Francis",
+        "subtitlePlaintext": "Sean Francis",
+        "descriptionFormatted": "",
+        "descriptionPlaintext": "",
+        "coverStyles": {},
+        "coverAltText": null,
+        "markedForPurgeAt": null,
+        "collectedByCurrentUser": false
+      },
+      "relationships": {
+        "category": {
+          "data": {
+            "id": "47a98389-3e1f-40fd-b3be-c0c5aef075d1",
+            "type": "categories"
+          }
+        }
+      },
+      "meta": {
+        "partial": true
+      }
+    }
+  ]
+}

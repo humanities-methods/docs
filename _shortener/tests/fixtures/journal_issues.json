@@ -1,0 +1,464 @@
+{
+  "data": [
+    {
+      "id": "4057c08a-6ce7-499f-87b5-e6692f23039f",
+      "type": "journalIssues",
+      "attributes": {
+        "abilities": {
+          "read": true
+        },
+        "number": "1",
+        "journalVolumeNumber": null,
+        "projectId": "3691fe2b-8a51-4d25-880e-14997c4074e0",
+        "createdAt": "2026-02-26T20:05:04.447Z",
+        "updatedAt": "2026-09-30T17:00:50.761Z",
+        "avatarColor": "primary",
+        "avatarMeta": {
+          "small": {
+            "width": 320,
+            "height": 320
+          },
+          "smallSquare": {
+            "width": 320,
+            "height": 320
+          },
+          "smallLandscape": {
+            "width": 320,
+            "height": 200
+          },
+          "smallPortrait": {
+            "width": 200,
+            "height": 320
+          },
+          "medium": {
+            "width": 640,
+            "height": 640
+          },
+          "mediumSquare": {
+            "width": 640,
+            "height": 640
+          },
+          "mediumLandscape": {
+            "width": 640,
+            "height": 400
+          },
+          "mediumPortrait": {
+            "width": 400,
+            "height": 640
+          },
+          "largeLandscape": {
+            "width": 1280,
+            "height": 800
+          },
+          "original": {
+            "width": 500,
+            "height": 500
+          }
+        },
+        "avatarStyles": {
+          "small": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/small-116354f40e44223b92b5796247e37ca7.png",
+          "smallSquare": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/small_square-d17b8a7d8169ad332bd6e9c7759a651b.png",
+          "smallLandscape": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/small_landscape-f6538012888931338833234a8cd19444.png",
+          "smallPortrait": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/small_portrait-e5c9a304488fe06c03c0f5e36b3e7e74.png",
+          "medium": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/medium-00b59d7dfa7320da68c2a29b2f57fa18.png",
+          "mediumSquare": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/medium_square-ca8c019e181670e6956256f7a5d734ef.png",
+          "mediumLandscape": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/medium_landscape-8b77d66dabdd7c9defc07207bfd04a30.png",
+          "mediumPortrait": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/medium_portrait-0f10fde4b16ded285cb09f96ef914965.png",
+          "largeLandscape": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/large_landscape-9d8318c89f01acdbd4c931e15acdbde6.png",
+          "original": "https://cdn.cuny.manifoldapp.org/store/project/3/6/9/3691fe2b-8a51-4d25-880e-14997c4074e0/avatar/87586d2810c60bb53dd701b002324c11.png"
+        },
+        "avatarAltText": null,
+        "recentlyUpdated": true,
+        "finished": false,
+        "draft": false,
+        "title": "Humanities Methods in Librarianship, no. 1",
+        "pendingSortTitle": null,
+        "projectMarkedForPurgeAt": null,
+        "heroStyles": {},
+        "heroAltText": null,
+        "coverStyles": {},
+        "coverAltText": null,
+        "projectSlug": "humanities-methods-in-librarianship-no-1",
+        "publicationDate": null,
+        "creatorNames": "",
+        "orderedCollaboratorNames": ""
+      },
+      "relationships": {
+        "journalVolume": {
+          "data": null
+        },
+        "journal": {
+          "data": {
+            "id": "3d645582-2b7d-4ff6-8c63-e72872e86961",
+            "type": "journals"
+          }
+        },
+        "project": {
+          "data": {
+            "id": "3691fe2b-8a51-4d25-880e-14997c4074e0",
+            "type": "projects"
+          }
+        },
+        "contentBlocks": {
+          "data": [
+            {
+              "id": "0da794e7-2e8f-4200-935f-75333962c6e6",
+              "type": "textsBlocks"
+            }
+          ]
+        },
+        "texts": {
+          "data": [
+            {
+              "id": "306e4de4-0664-46fd-beba-b05ce6989a41",
+              "type": "texts"
+            },
+            {
+              "id": "71ff9377-37fa-479f-adde-714b4127982a",
+              "type": "texts"
+            },
+            {
+              "id": "d05cfb88-3ac3-443e-84ba-ebbca19b22a5",
+              "type": "texts"
+            },
+            {
+              "id": "ace2776b-77b3-4133-bc7c-b4588e3f26de",
+              "type": "texts"
+            },
+            {
+              "id": "8e4dfe10-c87f-4d67-85e0-779d0185830c",
+              "type": "texts"
+            },
+            {
+              "id": "1c06cc2a-10ed-4bea-b59d-76646deb039a",
+              "type": "texts"
+            },
+            {
+              "id": "12adcaf6-dd8c-40d7-bbed-fece0327ca93",
+              "type": "texts"
+            },
+            {
+              "id": "7b53f79d-a2f8-4ccd-b5e7-46c9e85f436a",
+              "type": "texts"
+            }
+          ]
+        },
+        "textCategories": {
+          "data": [
+            {
+              "id": "b04ddb4c-0614-4fed-9390-6976ff2bc4ae",
+              "type": "categories"
+            },
+            {
+              "id": "47a98389-3e1f-40fd-b3be-c0c5aef075d1",
+              "type": "categories"
+            },
+            {
+              "id": "919261ae-7795-4ccb-8655-4d56c1344b36",
+              "type": "categories"
+            }
+          ]
+        },
+        "creators": {
+          "data": []
+        }
+      },
+      "meta": {
+        "partial": false
+      }
+    },
+    {
+      "id": "6cc01bd5-8dfd-4357-a9f1-4d029a7b9208",
+      "type": "journalIssues",
+      "attributes": {
+        "abilities": {
+          "read": true
+        },
+        "number": "0",
+        "journalVolumeNumber": null,
+        "projectId": "4581dadf-d196-4fdc-992c-dabb6b43eab5",
+        "createdAt": "2025-09-16T18:08:59.058Z",
+        "updatedAt": "2026-04-21T18:50:46.741Z",
+        "avatarColor": "primary",
+        "avatarMeta": {
+          "small": {
+            "width": 320,
+            "height": 320
+          },
+          "smallSquare": {
+            "width": 320,
+            "height": 320
+          },
+          "smallLandscape": {
+            "width": 320,
+            "height": 200
+          },
+          "smallPortrait": {
+            "width": 200,
+            "height": 320
+          },
+          "medium": {
+            "width": 640,
+            "height": 640
+          },
+          "mediumSquare": {
+            "width": 640,
+            "height": 640
+          },
+          "mediumLandscape": {
+            "width": 640,
+            "height": 400
+          },
+          "mediumPortrait": {
+            "width": 400,
+            "height": 640
+          },
+          "largeLandscape": {
+            "width": 1280,
+            "height": 800
+          },
+          "original": {
+            "width": 500,
+            "height": 500
+          }
+        },
+        "avatarStyles": {
+          "small": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/small-f8529e9f1ca3fe88b8dbf2249ac42922.png",
+          "smallSquare": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/small_square-e98daf5e5d84faa1286c63de217d934b.png",
+          "smallLandscape": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/small_landscape-6b4d24221e07ca1baa3b85d5e23c4518.png",
+          "smallPortrait": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/small_portrait-81d83c8752e04186516212ae632484e9.png",
+          "medium": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/medium-b536eef4b31871cd65e0375d343cb097.png",
+          "mediumSquare": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/medium_square-26dcc9ee63e4747e6a9f67957f097b93.png",
+          "mediumLandscape": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/medium_landscape-ff400d74979217ef3c0054c18cc32130.png",
+          "mediumPortrait": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/medium_portrait-79f0c06224989b26ae1e1a791814f390.png",
+          "largeLandscape": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/large_landscape-044edae024521cab0d1fc51202ced280.png",
+          "original": "https://cdn.cuny.manifoldapp.org/store/project/4/5/8/4581dadf-d196-4fdc-992c-dabb6b43eab5/avatar/a39650aa0714598ce83dabf08e5bf1cb.png"
+        },
+        "avatarAltText": null,
+        "recentlyUpdated": false,
+        "finished": false,
+        "draft": false,
+        "title": "Humanities Methods in Librarianship, no. 0",
+        "pendingSortTitle": null,
+        "projectMarkedForPurgeAt": null,
+        "heroStyles": {},
+        "heroAltText": null,
+        "coverStyles": {},
+        "coverAltText": null,
+        "projectSlug": "humanities-methods-in-librarianship-no-0",
+        "publicationDate": null,
+        "creatorNames": "",
+        "orderedCollaboratorNames": ""
+      },
+      "relationships": {
+        "journalVolume": {
+          "data": null
+        },
+        "journal": {
+          "data": {
+            "id": "3d645582-2b7d-4ff6-8c63-e72872e86961",
+            "type": "journals"
+          }
+        },
+        "project": {
+          "data": {
+            "id": "4581dadf-d196-4fdc-992c-dabb6b43eab5",
+            "type": "projects"
+          }
+        },
+        "contentBlocks": {
+          "data": [
+            {
+              "id": "5324bc3a-fe7e-4daf-b325-15c7c282b767",
+              "type": "textsBlocks"
+            }
+          ]
+        },
+        "texts": {
+          "data": [
+            {
+              "id": "4044ee74-76eb-4b26-9b13-27ca47d2b7b3",
+              "type": "texts"
+            },
+            {
+              "id": "c6aaab9f-2f18-43f3-92b6-890a0166adb0",
+              "type": "texts"
+            },
+            {
+              "id": "a078f428-70c7-4b93-be0d-8a94dfec5e56",
+              "type": "texts"
+            },
+            {
+              "id": "36faea6f-6ba5-4f05-a77c-303a2a63de98",
+              "type": "texts"
+            },
+            {
+              "id": "f9715a75-9280-4b79-acad-a76b78637c2c",
+              "type": "texts"
+            },
+            {
+              "id": "35feb427-ea22-4402-b3df-e3005f744f3b",
+              "type": "texts"
+            },
+            {
+              "id": "4f136594-116b-47b7-8d78-53e8a994350a",
+              "type": "texts"
+            },
+            {
+              "id": "b87327d0-0135-4c16-8069-341f7588546f",
+              "type": "texts"
+            }
+          ]
+        },
+        "textCategories": {
+          "data": [
+            {
+              "id": "21b470c9-82e2-4308-acf9-024e67aafa25",
+              "type": "categories"
+            },
+            {
+              "id": "50b8e6f1-30ee-42a3-9ba3-c1e1b77444c4",
+              "type": "categories"
+            }
+          ]
+        },
+        "creators": {
+          "data": []
+        }
+      },
+      "meta": {
+        "partial": false
+      }
+    },
+    {
+      "id": "222e3c89-21fb-4d61-81c2-ae38e86d4c39",
+      "type": "journalIssues",
+      "attributes": {
+        "abilities": {
+          "read": true
+        },
+        "number": "-1",
+        "journalVolumeNumber": null,
+        "projectId": "c5bdac74-7987-4985-bb1e-a6410162f18b",
+        "createdAt": "2026-04-07T19:02:20.565Z",
+        "updatedAt": "2026-09-28T22:49:19.247Z",
+        "avatarColor": "primary",
+        "avatarMeta": {},
+        "avatarStyles": {},
+        "avatarAltText": null,
+        "recentlyUpdated": true,
+        "finished": false,
+        "draft": true,
+        "title": "Humanities Methods in Librarianship, no. -1",
+        "pendingSortTitle": null,
+        "projectMarkedForPurgeAt": null,
+        "heroStyles": {},
+        "heroAltText": null,
+        "coverStyles": {},
+        "coverAltText": null,
+        "projectSlug": "humanities-methods-in-librarianship-no-1-116dd5c9-832c-4582-bae3-63333282f294",
+        "publicationDate": null,
+        "creatorNames": "",
+        "orderedCollaboratorNames": ""
+      },
+      "relationships": {
+        "journalVolume": {
+          "data": null
+        },
+        "journal": {
+          "data": {
+            "id": "3d645582-2b7d-4ff6-8c63-e72872e86961",
+            "type": "journals"
+          }
+        },
+        "project": {
+          "data": {
+            "id": "c5bdac74-7987-4985-bb1e-a6410162f18b",
+            "type": "projects"
+          }
+        },
+        "contentBlocks": {
+          "data": [
+            {
+              "id": "0dac2748-e4f9-48a8-afbb-b28d3de07a91",
+              "type": "textsBlocks"
+            }
+          ]
+        },
+        "texts": {
+          "data": [
+            {
+              "id": "cc4b917e-9bb0-435e-b0c1-21397fc29c29",
+              "type": "texts"
+            },
+            {
+              "id": "a10780fe-6e81-4a81-b7bd-5dc8271d1c39",
+              "type": "texts"
+            },
+            {
+              "id": "aae623ed-9430-4507-9d52-d6a8d4a015d1",
+              "type": "texts"
+            },
+            {
+              "id": "abc87365-3200-46d5-a958-e4e947264a05",
+              "type": "texts"
+            },
+            {
+              "id": "fb73dfff-8f78-4fa6-8ca0-a034b662f44d",
+              "type": "texts"
+            },
+            {
+              "id": "2adfec0e-a87f-4ed7-922d-9697ecccc244",
+              "type": "texts"
+            },
+            {
+              "id": "bab9d484-91a8-4fc1-8ce5-5c8e34aadfba",
+              "type": "texts"
+            },
+            {
+              "id": "0be206e8-fbfc-4340-8a9d-c981cc8b0d75",
+              "type": "texts"
+            },
+            {
+              "id": "83817583-1cba-4da3-85f9-d32112ca58fa",
+              "type": "texts"
+            }
+          ]
+        },
+        "textCategories": {
+          "data": [
+            {
+              "id": "f4dba3bc-31a2-4851-b68c-53b116730270",
+              "type": "categories"
+            },
+            {
+              "id": "0b0603e4-0582-4d2d-a50a-d1f5db715424",
+              "type": "categories"
+            },
+            {
+              "id": "8cb44225-b55f-4f13-8344-4e4969f28e0c",
+              "type": "categories"
+            }
+          ]
+        },
+        "creators": {
+          "data": []
+        }
+      },
+      "meta": {
+        "partial": false
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "perPage": 100,
+      "currentPage": 1,
+      "nextPage": 0,
+      "prevPage": 0,
+      "skipped": false,
+      "totalPages": 1,
+      "totalCount": 3
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": "112bcbd4-80b6-4a81-b571-dbc695049783",
+      "type": "journals",
+      "attributes": {
+        "slug": "cuny-transition",
+        "title": "Transit(ion)"
+      }
+    },
+    {
+      "id": "91c0ef84-7728-455f-929e-e3bcd9a762c9",
+      "type": "journals",
+      "attributes": {
+        "slug": "american-music-review",
+        "title": "American Music Review"
+      }
+    },
+    {
+      "id": "d45f6d1d-316c-4c5f-9a53-b3597a458d87",
+      "type": "journals",
+      "attributes": {
+        "slug": "emerging-works-in-diverian-linguistics",
+        "title": "Emerging Works in Diverian Linguistics"
+      }
+    },
+    {
+      "id": "3d645582-2b7d-4ff6-8c63-e72872e86961",
+      "type": "journals",
+      "attributes": {
+        "slug": "hml",
+        "title": "Humanities Methods in Librarianship"
+      }
+    },
+    {
+      "id": "9002e7fe-82b4-4549-9ba4-9fbcce811ce2",
+      "type": "journals",
+      "attributes": {
+        "slug": "jitp",
+        "title": "Journal of Interactive Technology and Pedagogy"
+      }
+    }
+  ]
+}
