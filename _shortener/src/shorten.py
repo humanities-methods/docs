@@ -61,3 +61,23 @@ def parse_texts(project_response):
         }
         for text in texts
     ]
+
+
+def current_targets(project_response):
+    """Map the issue's project id and each text id to its current title,
+    subtitle and Manifold URL."""
+    project = project_response["data"]
+    current = {
+        project["id"]: {
+            "title": project["attributes"]["title"],
+            "subtitle": "",
+            "target": f"{BASE_URL}/projects/{project['attributes']['slug']}",
+        }
+    }
+    for text in parse_texts(project_response):
+        current[text["id"]] = {
+            "title": text["title"],
+            "subtitle": text["subtitle"],
+            "target": text["target"],
+        }
+    return current
