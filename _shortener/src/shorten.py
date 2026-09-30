@@ -194,3 +194,12 @@ def render_page(row):
         target=html.escape(row["target"]),
         target_js=json.dumps(row["target"]),
     )
+
+
+def write_pages(rows, site_root):
+    """Write <site_root>/<path>/index.html for every row. Nothing else in
+    the site is touched, and nothing is deleted."""
+    for row in rows:
+        page = site_root / row["path"] / "index.html"
+        page.parent.mkdir(parents=True, exist_ok=True)
+        page.write_text(render_page(row), encoding="utf-8")
