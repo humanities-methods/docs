@@ -1,7 +1,15 @@
 """Generate short redirect URLs for HML texts published on CUNY Manifold."""
 
+import re
+import unicodedata
+
 BASE_URL = "https://cuny.manifoldapp.org"
 JOURNAL_SLUG = "hml"
+
+# Small words that don't count toward the two content words in a short code.
+STOPWORDS = set(
+    "a an and as at by for from in into is it its of on or the to with".split()
+)
 
 
 def find_journal_id(journals_response):
@@ -81,3 +89,24 @@ def current_targets(project_response):
             "target": text["target"],
         }
     return current
+
+
+def propose_code(title):
+    """Propose a short code from a title: the words of the main title (before
+    any colon) up to and including the second content word. Book reviews
+    ("Review of X") become "review-" plus the code for X."""
+    if title.startswith("Review of "):
+        return "review-" + propose_code(title.removeprefix("Review of "))
+    # Drop straight and curly apostrophes so "It’s" becomes "its".
+    main_title = title.split(":")[0].replace("'", "").replace("’", "")
+    plain = unicodedata.normalize("NFKD", main_title).encode("ascii", "ignore")
+    words = re.findall(r"[a-z0-9]+", plain.decode().lower())
+    code_words = []
+    content_words = 0
+    for word in words:
+        code_words.append(word)
+        if word not in STOPWORDS:
+            content_words += 1
+        if content_words == 2:
+            break
+    return "-".join(code_words)
