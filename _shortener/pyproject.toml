@@ -1,0 +1,18 @@
+[project]
+name = "hml-shortener"
+version = "0.1.0"
+description = "Short URLs on docs.humanitiesmethods.org for HML texts on Manifold"
+requires-python = ">=3.13"
+dependencies = [
+    "requests>=2.34.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+pythonpath = ["src"]
