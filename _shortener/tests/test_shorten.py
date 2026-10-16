@@ -436,6 +436,18 @@ def test_render_page_has_link_preview_tags():
     assert '<meta name="twitter:card" content="summary">' in page
 
 
+def test_render_page_has_a_preview_image_with_alt_text():
+    page = shorten.render_page(metadata_row())
+    assert (
+        '<meta property="og:image" '
+        'content="https://docs.humanitiesmethods.org/static/thumbnail.png">'
+    ) in page
+    assert (
+        '<meta property="og:image:alt" content="The HML logo: '
+        'a drawing of a hand writing with a fountain pen">'
+    ) in page
+
+
 def test_render_page_leaves_out_an_empty_description():
     assert "og:description" not in shorten.render_page(issue_row())
 
