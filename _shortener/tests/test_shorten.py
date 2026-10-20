@@ -247,6 +247,16 @@ def test_code_for_a_review_without_a_colon():
     assert shorten.propose_code(title) == "review-how-to-study"
 
 
+def test_code_keeps_a_hyphenated_word_together():
+    title = "Our Dis-ease: Avoiding Sexual Health Literacy"
+    assert shorten.propose_code(title) == "our-dis-ease"
+
+
+def test_code_counts_a_hyphenated_word_as_one_content_word():
+    title = "Self-Care for Librarians"
+    assert shorten.propose_code(title) == "self-care-for-librarians"
+
+
 def test_code_for_a_title_without_latin_letters_is_text():
     assert shorten.propose_code("日本の図書館") == "text"
 

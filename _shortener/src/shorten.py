@@ -116,7 +116,8 @@ def current_targets(project_response):
 
 def propose_code(title):
     """Propose a short code from a title: the words of the main title (before
-    any colon) up to and including the second content word. Book reviews
+    any colon) up to and including the second content word. A hyphenated word
+    like "Dis-ease" stays whole and counts as one word. Book reviews
     ("Review of X") become "review-" plus the code for X. A title with no
     Latin letters or digits gets "text", for an editor to rename."""
     if title.startswith("Review of "):
@@ -124,7 +125,7 @@ def propose_code(title):
     # Drop straight and curly apostrophes so "It’s" becomes "its".
     main_title = title.split(":")[0].replace("'", "").replace("’", "")
     plain = unicodedata.normalize("NFKD", main_title).encode("ascii", "ignore")
-    words = re.findall(r"[a-z0-9]+", plain.decode().lower())
+    words = re.findall(r"[a-z0-9]+(?:-[a-z0-9]+)*", plain.decode().lower())
     code_words = []
     content_words = 0
     for word in words:
