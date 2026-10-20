@@ -2,6 +2,10 @@
 # runs the tests, refreshes each link's target from Manifold, writes the
 # redirect pages (1/index.html, 1/<code>/index.html, ...) and commits them.
 # GitHub Pages then publishes that commit like any other push to gh-pages.
+#
+# Scheduled and manual runs also look for texts on Manifold that aren't in
+# links.csv yet and open a pull request adding them, so an editor can rename
+# the proposed codes before merging. The merge then rebuilds the pages.
 name: Build short links
 
 on:
@@ -11,13 +15,16 @@ on:
   push:
     branches: [gh-pages]
     paths: ["_shortener/**"]
-  # Weekly check that every link still points at Manifold's current URL.
+  # Weekly check for new texts, and that every link still points at
+  # Manifold's current URL.
   schedule:
     - cron: "0 7 * * 1" # Mondays, 07:00 UTC
 
-# Lets the job push the generated pages back to the repo.
+# Lets the job push the generated pages back to the repo and open pull
+# requests for new texts.
 permissions:
   contents: write
+  pull-requests: write
 
 # Never let two runs push at the same time.
 concurrency:
@@ -54,3 +61,45 @@ jobs:
           git add _shortener/links.csv ':(glob)[1-9]*/**/index.html'
           git diff --cached --quiet || git commit -m "Update short link pages"
           git push
+
+      # Skipped on pushes, so merging the pull request only builds pages.
+      # While the pull request is open it's left alone, so a later run can't
+      # overwrite codes an editor has renamed on its branch.
+      - name: Open a pull request for new texts
+        if: github.event_name != 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          open=$(gh pr list --head new-short-links --state open --json number --jq length)
+          if [ "$open" != 0 ]; then
+            echo "The new-short-links pull request is still open; leaving it alone."
+            exit 0
+          fi
+          # Written to a file, not piped, so a failed Manifold request fails
+          # this step instead of looking like "nothing new".
+          uv run python src/shorten.py add > "$RUNNER_TEMP/added.txt"
+          cat "$RUNNER_TEMP/added.txt"
+          if git diff --quiet links.csv; then
+            exit 0
+          fi
+          git switch -C new-short-links
+          git commit -m "Add short links for new texts" links.csv
+          git push --force origin new-short-links
+          {
+            echo "These texts are on Manifold but don't have short links yet:"
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/added.txt"
+            echo '```'
+            echo
+            echo "To change a code before it goes live, open **Files changed**," \
+              "choose **Edit file** from the **…** menu on \`_shortener/links.csv\`," \
+              "and edit the path at the start of the row. Keep the issue number" \
+              "and slash, and use only lowercase letters, digits and hyphens." \
+              "Commit the change to this branch."
+            echo
+            echo "Merging builds the redirect pages. Until this pull request is" \
+              "merged or closed, later runs won't open another one."
+          } > "$RUNNER_TEMP/body.md"
+          gh pr create --base gh-pages --head new-short-links \
+            --title "Add short links for new texts" --body-file "$RUNNER_TEMP/body.md"
