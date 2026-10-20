@@ -295,11 +295,17 @@ def find_issue(issues, number):
     sys.exit(f"Issue {number} isn't on Manifold yet (found issues: {found}).")
 
 
-def add(number, csv_path=LINKS_CSV):
-    """Append rows for one issue to links.csv and print the new short URLs."""
-    issue = find_issue(fetch_issues(), number)
+def add(number=None, csv_path=LINKS_CSV):
+    """Append rows for one issue, or for every issue when number is None, to
+    links.csv and print the new short URLs."""
+    issues = fetch_issues()
+    if number is not None:
+        issues = [find_issue(issues, number)]
     rows = read_links(csv_path) if csv_path.exists() else []
-    added = new_rows(issue, parse_texts(fetch_project(issue["project_id"])), rows)
+    added = []
+    for issue in issues:
+        texts = parse_texts(fetch_project(issue["project_id"]))
+        added += new_rows(issue, texts, rows + added)
     write_links(csv_path, rows + added)
     print(f"Added {len(added)} links to {csv_path.name}")
     for row in added:
@@ -330,8 +336,13 @@ def issue_number(text):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
-    add_command = commands.add_parser("add", help="add a new issue's links")
-    add_command.add_argument("issue", type=issue_number, help="issue number, 1 or up")
+    add_command = commands.add_parser("add", help="add links for new texts")
+    add_command.add_argument(
+        "issue",
+        type=issue_number,
+        nargs="?",
+        help="issue number, 1 or up; leave out to check every issue",
+    )
     commands.add_parser("build", help="refresh targets and write redirect pages")
     args = parser.parse_args()
     if args.command == "add":

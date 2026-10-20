@@ -596,6 +596,72 @@ def test_find_issue_explains_an_issue_not_on_manifold_yet():
         shorten.find_issue(issues, 2)
 
 
+# --- `add`: checking Manifold for new texts ---
+
+
+def issue_2():
+    return {
+        "number": 2,
+        "project_id": "issue-2-project",
+        "project_slug": "humanities-methods-in-librarianship-no-2",
+        "title": "Humanities Methods in Librarianship, no. 2",
+    }
+
+
+@pytest.fixture
+def manifold(monkeypatch):
+    """Stand in for the Manifold API: issue 1 as saved in the fixtures, plus
+    an issue 2 with no published texts yet."""
+    projects = {
+        ISSUE_1_PROJECT_ID: load_fixture("project_issue_1.json"),
+        "issue-2-project": {"included": []},
+    }
+    monkeypatch.setattr(shorten, "fetch_issues", lambda: [issue_1(), issue_2()])
+    monkeypatch.setattr(shorten, "fetch_project", projects.get)
+
+
+def test_add_without_an_issue_number_checks_every_issue(tmp_path, manifold):
+    csv_path = tmp_path / "links.csv"
+    shorten.write_links(csv_path, [issue_row(), metadata_row()])
+    shorten.add(csv_path=csv_path)
+    assert [row["path"] for row in shorten.read_links(csv_path)] == [
+        "1",
+        "1/metadata-as-care",
+        "1/embracing-place",
+        "1/reading-disrepair",
+        "1/ode-to-the-abode",
+        "1/pretend-its-magic",
+        "1/review-triptych",
+        "1/review-hayeks-bastards",
+        "1/review-how-to-study",
+        "2",
+    ]
+
+
+def test_add_with_an_issue_number_checks_only_that_issue(tmp_path, manifold):
+    csv_path = tmp_path / "links.csv"
+    shorten.add(2, csv_path)
+    assert [row["path"] for row in shorten.read_links(csv_path)] == ["2"]
+
+
+def test_add_prints_the_new_short_links(tmp_path, manifold, capsys):
+    shorten.add(2, tmp_path / "links.csv")
+    assert (
+        "https://docs.humanitiesmethods.org/2  "
+        "Humanities Methods in Librarianship, no. 2"
+    ) in capsys.readouterr().out
+
+
+def test_add_leaves_links_csv_unchanged_when_nothing_is_new(tmp_path, manifold):
+    # The workflow opens a pull request only when links.csv changes.
+    csv_path = tmp_path / "links.csv"
+    rows = shorten.new_rows(issue_1(), issue_1_texts(), [])
+    shorten.write_links(csv_path, rows + shorten.new_rows(issue_2(), [], rows))
+    before = csv_path.read_bytes()
+    shorten.add(csv_path=csv_path)
+    assert csv_path.read_bytes() == before
+
+
 # --- `build`: refusing a broken links.csv ---
 
 
