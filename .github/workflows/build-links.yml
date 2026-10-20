@@ -15,10 +15,10 @@ on:
   push:
     branches: [gh-pages]
     paths: ["_shortener/**"]
-  # Weekly check for new texts, and that every link still points at
+  # Daily check for new texts, and that every link still points at
   # Manifold's current URL.
   schedule:
-    - cron: "0 7 * * 1" # Mondays, 07:00 UTC
+    - cron: "0 7 * * *" # Every day, 07:00 UTC
 
 # Lets the job push the generated pages back to the repo and open pull
 # requests for new texts.
