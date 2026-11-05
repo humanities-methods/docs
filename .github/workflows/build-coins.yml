@@ -1,0 +1,73 @@
+# Keeps _coins/spans/<issue>.html up to date: one COinS span per text, ready
+# to paste into the text's HTML before it's ingested into Manifold, so Zotero
+# saves it as a journal article. Runs the _coins tests, regenerates the spans
+# from _shortener/links.csv and commits any changes.
+#
+# The commit's diff shows which texts' spans changed (a new text, or a
+# corrected title or byline): those are the spans to paste into Manifold.
+name: Build COinS spans
+
+on:
+  # Adds a "Run workflow" button to the Actions tab.
+  workflow_dispatch:
+  # Rebuilds when an editor changes links.csv (e.g. merges the pull request
+  # for new texts), the author or date lists, or the generator.
+  push:
+    branches: [gh-pages]
+    paths: ["_coins/**", "_shortener/links.csv"]
+  # Also rebuilds after "Build short links", which can update titles and
+  # URLs in links.csv from Manifold. Its commits are made with the workflow
+  # token, and those never start a push-triggered run, hence this trigger.
+  workflow_run:
+    workflows: ["Build short links"]
+    types: [completed]
+    branches: [gh-pages]
+
+permissions:
+  contents: write
+
+# Shares the short links' group so the two never push at the same time.
+concurrency:
+  group: build-short-links
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # After "Build short links", only run if it succeeded.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: _coins
+    steps:
+      # A workflow_run run would otherwise check out the triggering commit,
+      # without the short links' own commit on top.
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: gh-pages
+
+      - uses: astral-sh/setup-uv@v10.2.0
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Run tests
+        run: uv run pytest
+
+      - name: Write spans for every issue
+        run: uv run python src/coins.py --write
+
+      - name: Commit and push any changes
+        working-directory: .
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _coins/spans
+          if git diff --cached --quiet; then
+            echo "Spans are already up to date."
+            exit 0
+          fi
+          changed=$(git diff --cached --name-only | sed 's|_coins/spans/||' | paste -sd ' ' -)
+          git commit -m "Update COinS spans (issue files: $changed)"
+          git pull --rebase origin gh-pages
+          git push

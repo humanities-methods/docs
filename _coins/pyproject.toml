@@ -1,0 +1,16 @@
+[project]
+name = "hml-coins"
+version = "0.1.0"
+description = "COinS spans for HML texts on Manifold, so Zotero saves them as journal articles"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+pythonpath = ["src"]
